@@ -40,17 +40,15 @@ class StudenController extends Controller
     public function logins(Request $request)
     {
         $request->validate([
-            "nombre" => "required",
+            "mote" => "required",
             "password" => "required"
         ]);
-        $studen = studen::where("nombre", "=", $request->nombre)->first();
+        $studen = studen::where("mote", "=", $request->mote)->first();
         if (isset($studen->id)) {
             if (Hash::check($request->password, $studen->password)) {
-                $token = $studen->createToken("auth_token")->plainTextToken;
                 return response()->json([
                     "status" => 1,
                     "message" => "Usuario logeado exitosamente",
-                    "access_token" => $token
                 ]);
             } else {
                 return response()->json([

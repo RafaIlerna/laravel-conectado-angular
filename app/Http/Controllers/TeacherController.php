@@ -40,17 +40,15 @@ class TeacherController extends Controller
     public function logint(Request $request)
     {
         $request->validate([
-            "nombre" => "required",
+            "mote" => "required",
             "password" => "required"
         ]);
-        $teacher = teacher::where("nombre", "=", $request->nombre)->first();
+        $teacher = teacher::where("mote", "=", $request->mote)->first();
         if (isset($teacher->id)) {
             if (Hash::check($request->password, $teacher->password)) {
-                $token = $teacher->createToken("auth_token")->plainTextToken;
                 return response()->json([
                     "status" => 1,
                     "message" => "Usuario logeado exitosamente",
-                    "access_token" => $token
                 ]);
             } else {
                 return response()->json([
