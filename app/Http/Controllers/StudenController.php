@@ -33,7 +33,8 @@ class StudenController extends Controller
         $studen->save();
         return response()->json([
             "status" => 1,
-            "message" => "Studen created successfully",
+            "message" => "Estudiante creado exitosamente",
+            "value" => $studen
         ]);
     }
     //Creacion del login del studiante
@@ -49,6 +50,7 @@ class StudenController extends Controller
                 return response()->json([
                     "status" => 1,
                     "message" => "Usuario logeado exitosamente",
+                    "value" => $studen
                 ]);
             } else {
                 return response()->json([
@@ -78,7 +80,7 @@ class StudenController extends Controller
         $showstuden = studen::get();
         return response()->json([
             "status" => 1,
-            "message" => "studen view successfully",
+            "message" => "Vista del usuario exitosa",
             "roleshow" => $showstuden
         ]);
     }

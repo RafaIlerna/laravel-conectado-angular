@@ -33,10 +33,11 @@ class TeacherController extends Controller
         $teacher->save();
         return response()->json([
             "status" => 1,
-            "message" => "teacher created successfully",
+            "message" => "Profesor creado exitosamente",
+            "value" => $teacher
         ]);
     }
-    //Creacion del login del studiante
+    //Creacion del login del profesor
     public function logint(Request $request)
     {
         $request->validate([
@@ -48,7 +49,8 @@ class TeacherController extends Controller
             if (Hash::check($request->password, $teacher->password)) {
                 return response()->json([
                     "status" => 1,
-                    "message" => "Usuario logeado exitosamente",
+                    "message" => "Profesor logeado exitosamente",
+                    "value" => $teacher
                 ]);
             } else {
                 return response()->json([
@@ -59,7 +61,7 @@ class TeacherController extends Controller
         } else {
             return response()->json([
                 "status" => 0,
-                "message" => "El usuario no esta registrado",
+                "message" => "El profesor no esta registrado",
             ]);
         }
     }
@@ -78,7 +80,7 @@ class TeacherController extends Controller
         $showteacher = teacher::get();
         return response()->json([
             "status" => 1,
-            "message" => "studen view successfully",
+            "message" => "Vista del profesor exitosa",
             "roleshow" => $showteacher
         ]);
     }

@@ -25,7 +25,7 @@ Route::post('registert', [TeacherController::class, 'registert']);
 Route::post("registers", [StudenController::class, "registers"]);
 
 Route::post('logint', [TeacherController::class, 'logint']);
-Route::post('logins', [TeacherController::class, 'logins']);
+Route::post('logins', [StudenController::class, 'logins']);
 
 /*Route::post('/login',"login")->name('logins');
 Route::post('/principal','principal')->middleware('auth')->name('principal');*/
